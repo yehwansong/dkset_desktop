@@ -1,0 +1,123 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<head>
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+<script src="app.js"></script>
+<style type="text/css">
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        background:black;
+    }
+    .scroll{
+        width: 500vw;
+        height: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+        float: left;
+    }
+    .img{
+width: 9000px;
+height: 3000px;
+position: absolute;
+top: -700px;
+left: 0;
+transform-origin: left bottom;
+transform: skewY(-30deg);
+background-size: 3000px;
+    }
+    .wrapper,
+    .wrapper_2,
+    .wrapper_3{
+        width: 100vw;
+        height: 100%;
+        overflow-x: scroll;
+        position: fixed;
+        transform: rotate(0deg) skewX(30deg) scale(1.2);
+        transform-origin: left top
+    }
+    .wrapper{transform: rotate(0deg) skewX(45deg) scaleY(0.6)}
+    .wrapper_2{transform: rotate(-90deg) skewX(-45deg) translateX(-100%) scaleY(0.6) }
+    .wrapper_3{transform: rotate(0deg) skewX(45deg) translateX(-100%) scaleY(0.6); top: 100vw;}
+    .wrapper_side{
+        width: 100vw;
+        height: 50%;
+        overflow-x: scroll;
+        position: fixed;
+        transform: ;
+        transform-origin: left bottom;
+        z-index: 1000
+    }
+    .wrapper .gradient{
+width: 100%;
+height: 100%;
+background: linear-gradient(to left, black, transparent);
+z-index: 1000;
+position: absolute;
+    }
+    .wrapper_2 .gradient{
+width: 100%;
+height: 100%;
+background: linear-gradient(to left, rgba(0, 0, 0, 0.36), rgba(255, 255, 255, 0));
+z-index: 1000;
+position: absolute;
+    }
+    .wrapper_3 .gradient{
+width: 100%;
+height: 100%;
+background: linear-gradient(to left, rgba(0, 0, 0, 0.57), transparent);
+z-index: 1000;
+position: absolute;
+    }
+</style>
+</head>
+<body>
+  <script type="text/javascript">
+if(window.location.hash) {
+    var hash = window.location.hash.substring(1)
+}
+    var w = window.innerWidth
+    var h = window.innerHeight
+function onFirebaseReady() {
+    console.log('onFirebaseReady handler');
+            $('body').on('touchend', function(e) {
+                setFirebaseValues({
+                });
+            })
+}
+function firebaseValueChangeHandler(values) {
+    console.log(values.left)
+    $('.img_1').css({'transform':'translateX('+-1*(values.left+window.innerWidth)+'px)'})
+    $('.img_2').css({'transform':'translateX('+-1*(values.left)+'px)'})
+    $('.img_3').css({'transform':'translateX('+-1*(values.left-window.innerWidth)+'px)'})
+}
+$(document).ready(function(){
+// $(".wrapper").scroll(function(){
+//     $('img').css({'transform':'rotate(90deg) translateY('+-1*$('.wrapper').scrollLeft()+'px)'})
+// });
+})
+</script>
+<div class="wrapper">
+    <div class="gradient"></div>
+    <div class="img img_1" style="background-image:url('img/cover_2_rot.jpeg')"></div>
+</div>
+<div class="wrapper_2">
+    <div class="gradient"></div>
+    <div class="img img_2" style="background-image:url('img/cover_2_rot.jpeg')"></div>
+</div>
+<div class="wrapper_3">
+    <div class="gradient"></div>
+    <div class="img img_3" style="background-image:url('img/cover_2_rot.jpeg')"></div>
+</div>
+<!-- <div class="wrapper_side">
+    <img src="img/img4.jpg">
+</div> -->
+</body>
