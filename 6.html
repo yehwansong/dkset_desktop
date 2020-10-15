@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />
+  <meta name="apple-mobile-web-app-title" content="onlyWebPro" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<style>
+	*{
+		margin: 0;
+		padding: 0
+	}
+    html,body{
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow:hidden;
+		background-image: url('img/reflect.jpg');
+		background-size: 100vw;
+    }
+	.wrap_1{
+		width: 150vw;
+		height: 150vw;
+		overflow: hidden;
+		position: absolute;
+	}
+	.wrap_2{
+		width: 200vw;
+		height: 200vw;
+		transform: rotate(30deg);
+		transform-origin: left top;
+		overflow:hidden;
+	}
+	.img{
+		width: 100%;
+		height: 100%;
+		background-image: url('img/reflect.jpg');
+		/*background-repeat: no-repeat;*/
+		background-size: 100vw;
+	}
+	.reflect{
+		transform: scaleX(-1 );
+		transform-origin: left
+	}
+	.wrapper{
+		position: absolute;
+		left: 30vw;
+		/*transition: transform 0.5s*/
+	}
+	.ani{
+		transition: 0.5s
+	}
+	.whole_wrap,.whole_wrap_bot{
+		width: 100vw;
+		height: 70%;
+		position: absolute;
+		left: 0;
+		overflow: hidden;
+		top: 0;
+	}
+	.whole_wrap_bot{
+		transform-origin:bottom;
+		transform: scaleY(-1);
+	}
+	.wrapper_2{ transform: rotate(-120deg);}
+	.wrapper_3{ transform: rotate(120deg);}
+	.noani .wrap_2{ transform: rotate(0deg) !important;}
+	.noani .wrapper_2{ transform: rotate(0deg) !important;}
+	.noani .wrapper_3{ transform: rotate(0deg) !important;}
+	.noani .wrapper_4{ transform: rotate(0deg) !important;}
+	.noani .wrapper_5{ transform: rotate(0deg) !important;}
+	.noani .wrapper_6{ transform: rotate(0deg) !important;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var startx = 0
+		var starty = 0
+		var movedx = 0
+		var movedy = 0
+		console.log($('.wrapper').offset().left)
+		console.log($('.wrapper').offset().top)
+            $('body').on('touchstart', function(e) {
+            	$('.wrapper').removeClass('ani')
+				startx = $('.wrapper').offset().left + (e.originalEvent.touches[0].pageX-$('.wrapper').offset().left)/2
+				starty = $('.wrapper').offset().top + (e.originalEvent.touches[0].pageY-$('.wrapper').offset().top)/2
+            })
+            $('body').on('touchmove', function(e) {
+				movedx = e.originalEvent.touches[0].pageX
+				movedy = e.originalEvent.touches[0].pageY
+            	$('.wrapper').css({'left':($('.wrapper').offset().left + (e.originalEvent.touches[0].pageX-$('.wrapper').offset().left)/20)+'px'})
+            	$('.wrapper').css({'top' :($('.wrapper').offset().top + (e.originalEvent.touches[0].pageY-$('.wrapper').offset().top)/20)+'px'})
+            	$('.img').css({'background-position':-1*e.originalEvent.touches[0].pageX + 'px ' + -1*e.originalEvent.touches[0].pageY + 'px'})
+            })
+            $('body').on('touchend', function(e) {
+            	$('.wrapper').addClass('ani')
+            	$('.wrapper').css({'left':(window.innerWidth)/2+'px'})
+            	$('.wrapper').css({'top' :'0px'})
+            })
+	})
+</script>
+</head>
+<body>
+	<div class="whole_wrap">
+		<div class="wrapper wrapper_1">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+		<div class="wrapper wrapper_2">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+		<div class="wrapper wrapper_3">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+	</div>
+	<div class="whole_wrap_bot">
+		<div class="wrapper wrapper_1">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+		<div class="wrapper wrapper_2">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+		<div class="wrapper wrapper_3">
+		<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+		<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+		</div>
+	</div>
+	<!-- </div>
+	<div class="wrapper wrapper_4">
+	<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+	<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+	</div>
+	<div class="wrapper wrapper_5">
+	<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+	<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+	</div>
+	<div class="wrapper wrapper_6">
+	<div class="wrap_1 origin"><div class="wrap_2"><div class="img"></div></div></div>
+	<div class="wrap_1 reflect"><div class="wrap_2"><div class="img"></div></div></div>
+	</div> -->
+</body>
+</html>

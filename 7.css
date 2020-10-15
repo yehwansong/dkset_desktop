@@ -1,0 +1,341 @@
+
+ @font-face {
+    font-family: 'NotoSansKR';
+    src: url('NotoSansKR-Regular-Alphabetic.woff2') format('woff2'),
+        url('NotoSansKR-Regular-Alphabetic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ @font-face {
+    font-family: 'GTHaptikmed';
+    src: url('GTHaptik-Medium.woff2') format('woff2'),
+        url('GTHaptik-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body, html{
+	width: 100vw;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: black;
+	overflow: hidden;
+	position: fixed;
+
+}
+.container_wrap{
+position: fixed;
+width: 100vw;
+overflow-x: hidden;
+height: 100%;
+overflow-y: hidden;
+left: 0;
+top: 0;}
+*{
+	pointer-events: none;
+}
+body{
+	pointer-events: auto
+}
+.container1, .container2{
+width: 50%;
+height: 100vh;
+top:-7.5vh;
+position: absolute;
+}
+.container1{
+left: 0%;
+z-index: 10
+}
+.container2{
+right: 0%;
+z-index: 5
+}
+.infodiv{
+	width: 100%;
+	left: 0%;
+	height: 100%;
+	bottom: 3px;
+
+	position: absolute;
+	display: block;z-index:100;
+	transform-origin: right bottom;
+
+	border-top:3px solid white;
+	/*border-bottom:3px solid white;*/
+}
+.container1 .infodiv{
+	left: 100%;
+}
+.container2 .t_img{
+	width: 100%;
+	left: 0%;
+	height: 60%;
+	bottom: 0px;
+
+	position: absolute;
+	background-image: url('poster1.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.b_img{
+	width: 100%;
+	left: 0%;
+	height: 100%;
+	bottom: 0px;
+
+	position: absolute;
+	background: linear-gradient(rgba(255,255,255,0),rgba(0, 0, 255,1));
+}
+.container1 .infodiv{
+	background: linear-gradient(red, red);
+}
+.container2 > .direct .grad,
+.container1 > .direct .grad{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to left, rgba(0, 0, 0, 0.53), transparent) 20%;
+}
+.container1 > .opposite .grad,
+.container2 > .opposite .grad{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.53), transparent) 20%;
+}
+.direct, .opposite, .middle{
+	position: relative;
+	width: 100%;
+	height: 100%;
+transform-style: preserve-3d;
+}
+.middle{
+	z-index: 100;
+	position: absolute;
+}
+.container1 > .direct{
+	z-index: 0
+}
+.container1 > .opposite{
+margin-top: -100vh;
+	z-index: 1
+}
+.container2 > .direct{
+	z-index: 1
+}
+.container2 > .opposite{
+margin-top: -100vh;
+	z-index: 0
+}
+.rotate,.inv_rotate{
+	opacity: 1;
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	bottom: 11.5vh;
+	border-top:3px solid white;
+	border-bottom:3px solid white;
+	position: absolute;
+	color: white;
+	background-color: black;
+
+	perspective: none;
+
+	transform-origin: right bottom;
+	z-index: 10
+}
+
+
+.os{
+	left: 50%;
+	transform-origin: left bottom;
+	z-index: 20
+}
+.container1 .rotate,
+.container2{
+	text-align: right;
+}
+.container1 .inv_rotate,
+.container2 .inv_rotate{
+	text-align: left;
+}
+.rotate{
+	background-size: 100vw !important;
+}
+.inv_rotate{
+	background-size: 100vw !important;
+}
+
+.container1 .direct .rotate{
+	background-position: -0vw !important;
+	background-image: url(../img/circle_flip.jpg);
+}
+.container1 .opposite .rotate{
+	background-position: -25vw !important;
+	background-image: url(../img/circle.jpg);
+}
+.container2 .direct .inv_rotate{
+	background-position: -50vw !important;
+	background-image: url(../img/circle.jpg);
+}
+.container2 .opposite .inv_rotate{
+	background-position: -75vw !important;
+	background-image: url(../img/circle_flip.jpg);
+	/*background-position: -75vw !important*/
+}
+.container1 .direct .content,
+.container2 .opposite .content{
+	transform: scaleX(-1);
+}
+.rotate0, .inv_rotate0{
+	z-index: 1000;
+	overflow: visible;
+	background:none !important;
+	background-color: none !important;
+	border:none !important
+	;
+}
+.inv_rotate0{
+	z-index: 1000;
+	left: 0%;
+	position:absolute;
+}
+.rotate1{
+	-webkit-transform: rotateX(15deg) rotateY(0deg);
+	transform: rotateX(15deg) rotateY(0deg);
+
+    /*background-image: url('poster.png');*/
+    background-size: auto 85%;
+    background-position: center top;
+    background-repeat:repeat-x; 
+
+    opacity: 0.5
+
+    z-index:1;
+}
+.rotate2{
+	-webkit-transform: rotateX(15deg) rotateY(25.7deg);
+	transform: rotateX(15deg) rotateY(25.7deg);
+
+	z-index:2;
+}
+.rotate3{
+	-webkit-transform: rotateX(15deg) rotateY(51.4deg);
+	transform: rotateX(15deg) rotateY(51.4deg);
+
+	z-index:3;
+}
+.rotate4{
+	-webkit-transform: rotateX(15deg) rotateY(77.1deg);
+	transform: rotateX(15deg) rotateY(77.1deg);
+
+	z-index:7;
+}
+.rotate5{
+	-webkit-transform: rotateX(15deg) rotateY(102.8deg);
+	transform: rotateX(15deg) rotateY(102.8deg);
+
+	z-index:6;}
+.rotate6{
+	-webkit-transform: rotateX(15deg) rotateY(128.5deg);
+	transform: rotateX(15deg) rotateY(128.5deg);
+
+	z-index:5;
+}
+.rotate7{
+	-webkit-transform: rotateX(15deg) rotateY(154.2deg);
+	transform: rotateX(15deg) rotateY(154.2deg);
+
+	z-index:4;
+}
+.opposite > .rotate1{
+	z-index:7;
+}
+.opposite > .rotate2{
+	z-index:6;
+}
+.opposite > .rotate3{
+	z-index:5;
+}
+.opposite > .rotate4{
+	z-index:4;
+}
+.opposite > .rotate5{
+	z-index:3;
+}
+.opposite > .rotate6{
+	z-index:2;
+}
+.opposite > .rotate7{
+	z-index:1;
+}
+
+
+
+.inv_rotate1{
+	-webkit-transform: rotateX(15deg) rotateY(-0deg);
+	transform: rotateX(15deg) rotateY(-0deg);
+
+	z-index:1;
+}
+.inv_rotate2{
+	-webkit-transform: rotateX(15deg) rotateY(-25.7deg);
+	transform: rotateX(15deg) rotateY(-25.7deg);
+
+	z-index:2;
+}
+.inv_rotate3{
+	-webkit-transform: rotateX(15deg) rotateY(-51.4deg);
+	transform: rotateX(15deg) rotateY(-51.4deg);
+
+	z-index:3;
+}
+.inv_rotate4{
+	-webkit-transform: rotateX(15deg) rotateY(-77.1deg);
+	transform: rotateX(15deg) rotateY(-77.1deg);
+
+	z-index:4;
+}
+.inv_rotate5{
+	-webkit-transform: rotateX(15deg) rotateY(-102.8deg);
+	transform: rotateX(15deg) rotateY(-102.8deg);
+
+	z-index:5;
+}
+.inv_rotate6{
+	-webkit-transform: rotateX(15deg) rotateY(-128.5deg);
+	transform: rotateX(15deg) rotateY(-128.5deg);
+
+	z-index:6;
+}
+.inv_rotate7{
+	-webkit-transform: rotateX(15deg) rotateY(-154.2deg);
+	transform: rotateX(15deg) rotateY(-154.2deg);
+
+	z-index:7;
+}
+
+.opposite > .inv_rotate1{
+	z-index:7;
+}
+.opposite > .inv_rotate2{
+	z-index:6;
+}
+.opposite > .inv_rotate3{
+	z-index:5;
+}
+.opposite > .inv_rotate4{
+	z-index:4;
+}
+.opposite > .inv_rotate5{
+	z-index:3;
+}
+.opposite > .inv_rotate6{
+	z-index:2;
+}
+.opposite > .inv_rotate7{
+	z-index:1;
+}
+
