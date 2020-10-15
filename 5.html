@@ -39,7 +39,7 @@
                 height: 26.5vw;
                 position: absolute;
                 overflow: hidden;
-                background-color: black;
+                /*background-color: black;*/
                 border-radius: 50%;
                 opacity: 0
             }
@@ -193,7 +193,7 @@ $(document).ready(function(){
                 $('.step_10').find('.bg').css({'opacity':'.25'})
                 // $('.bg').addClass('animate_op')
                 $('.whole').css({'opacity':'.3'})
-                $('.elem').css({'background':'black'})
+                $('.elem').css({'background':'radial-gradient(rgba(0, 0, 0, 0.43) 3.78%, rgb(0, 0, 0) 69.13%, transparent 70.75%)'})
             })
             $('body').on('touchmove', function(e) {
                 movedx = (e.originalEvent.touches[0].pageX - startx)/3
