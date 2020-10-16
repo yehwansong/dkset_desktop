@@ -20,9 +20,6 @@ var w
 $( document ).ready(function() {   
   h = window.innerHeight;
   w = window.innerWidth
-  if(w/h<=1){
-    w=h
-  }
 })
 var isMobile = false; //initiate as false
 // device detection
@@ -40,7 +37,8 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
             document.addEventListener('touchend', function (e) {
                 findphonexy('up', e)
            });
-        }else{
+        }
+        else{
             document.addEventListener('mousedown', function (e) {
                 findphonexy('down', e)
            });
@@ -155,11 +153,19 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
                 var result = (185.5/370*w) - (185.5/370*w)/xabs*2
                 var result_2 = 1/xabs*4
                 if(result> 0&& result_2<1){
-                  {divs[i].style.transform = 'scaleX('+ (1 - 1/xabs*4) + ")"}
-                  {divs_back[i].style.transform = 'scaleX('+ ((1/xabs*4)) + ")"}
+                    {divs[i].style.transform = 'scaleX('+ (1 - 1/xabs*4) + ")"}
+                    if(!isMobile){
+                        {divs_back[i].style.transform = 'scaleX('+ ((1/xabs*4)+0.1) + ")"}
+                    }else{
+                        {divs_back[i].style.transform = 'scaleX('+ ((1/xabs*4)) + ")"}
+                    }
                 }else{
-                divs[i].style.transform = 'scaleX(0)'
-                divs_back[i].style.transform = 'scaleX(1)'
+                    divs_back[i].style.transform = 'scaleX(1)'
+                    if(!isMobile){
+                        divs[i].style.transform = 'scaleX(0.1)'
+                    }else{
+                        divs[i].style.transform = 'scaleX(0)'
+                    }
                 }
             }
       }

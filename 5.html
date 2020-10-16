@@ -138,13 +138,17 @@
             .animate{
                 transition: 1s
             }
-            .animate_op{
-                transition: opacity 1s
-            }
             .animate_bg{
                 transition: background-position 1s
             }
 @media (min-aspect-ratio: 1/1) {
+            .whole{
+                background-size: 33.33vw;
+            }
+            .bg{
+                background-size: 33.33vw;
+                /*filter: drop-shadow(0vh 0vh 1vh black);*/
+            }
             .elem{
                 width: 26.5%;
                 height: 26.5%;
@@ -387,6 +391,9 @@ $(document).ready(function(){
             })
             if(!isMobile){
                 $('body').on('mousedown', function(e) {
+                        $('.elem').removeClass('animate')
+                        $('.bg').removeClass('animate_bg')
+                        $('.whole').removeClass('animate')
                     down = true
                     $('.elem').css({'opacity':'1'})
                     startx = e.pageX
@@ -455,12 +462,10 @@ $(document).ready(function(){
                     $('.elem').each(function(){
                         $(this).find('.bg').css({'background-position': -1*$(this).offset().left + 'px ' + (-1*$(this).offset().top) + 'px'})
                     })
-                    // $('.bg').addClass('animate_op')
                     $('.whole').addClass('animate')
                     setTimeout(function(){
                         $('.elem').removeClass('animate')
-                    $('.bg').removeClass('animate_bg')
-                        // $('.bg').removeClass('animate_op')
+                        $('.bg').removeClass('animate_bg')
                         $('.whole').removeClass('animate')
                     },1200)
                     $('.step_1 ').css({'margin-left':'0vw'})

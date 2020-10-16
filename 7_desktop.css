@@ -23,14 +23,17 @@ body, html{
 	position: fixed;
 
 }
+@media (min-aspect-ratio: 1/1) {
 .container_wrap{
 position: fixed;
-width: 100vw;
+width: 170vh;
 overflow-x: hidden;
 height: 100%;
 overflow-y: hidden;
-left: 0;
-top: 0;}
+left: 50vw;
+top: 0;
+transform:translate(-50%);
+}
 *{
 	pointer-events: none;
 }
@@ -162,27 +165,27 @@ margin-top: -100vh;
 	text-align: left;
 }
 .rotate{
-	background-size: 100vw !important;
+	background-size: 85vh !important;
 }
 .inv_rotate{
-	background-size: 100vw !important;
+	background-size: 85vh !important;
 }
 
 .container1 .direct .rotate{
 	background-position: -0vw !important;
-	background-image: url(../img/circle_flip.jpg);
+	background-image: url(img/circle.jpg);
 }
 .container1 .opposite .rotate{
-	background-position: -25vw !important;
-	background-image: url(../img/circle.jpg);
+	background-position: -0vw !important;
+	background-image: url(img/circle_flip.jpg);
 }
 .container2 .direct .inv_rotate{
-	background-position: -50vw !important;
-	background-image: url(../img/circle.jpg);
+	background-position: -85vh !important;
+	background-image: url(img/circle_flip.jpg);
 }
 .container2 .opposite .inv_rotate{
-	background-position: -75vw !important;
-	background-image: url(../img/circle_flip.jpg);
+	background-position: -85vh !important;
+	background-image: url(img/circle.jpg);
 	/*background-position: -75vw !important*/
 }
 .container1 .direct .content,
@@ -337,5 +340,6 @@ margin-top: -100vh;
 }
 .opposite > .inv_rotate7{
 	z-index:1;
+}
 }
 
