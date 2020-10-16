@@ -144,6 +144,98 @@
             .animate_bg{
                 transition: background-position 1s
             }
+@media (min-aspect-ratio: 1/1) {
+            .elem{
+                width: 26.5%;
+                height: 26.5%;
+                position: absolute;
+                overflow: hidden;
+                /*background-color: black;*/
+                border-radius: 50%;
+                opacity: 0
+            }
+            .elem1{
+                left: 0;
+                top: 0;
+            }
+            .elem2{
+                left: 50%;
+                transform:translate(-50%);
+                top: 0;
+            }
+            .elem3{
+                left: 100%;
+                transform:translate(-100%);
+                top: 0;
+            }
+            .elem4{
+                left: 33.3%;
+                transform:translate(-50%);
+                top: 33.3%;
+            }
+            .elem5{
+                left: 66.6%;
+                transform:translate(-50%);
+                top: 33.3%;
+            }
+            .elem6{
+                left: 0;
+                top: 66.6%;
+            }
+            .elem7{
+                left: 50%;
+                transform:translate(-50%);
+                top: 66.6%;
+            }
+            .elem8{
+                left: 100%;
+                transform:translate(-100%);
+                top: 66.6%;
+            }
+            .elem9{
+                left: 33.3%;
+                transform:translate(-50%);
+                top: 99.9%;
+            }
+            .elem10{
+                left: 66.6%;
+                transform:translate(-50%);
+                top: 99.9%;
+            }
+            .elem11{
+                left: 0;
+                top: 133.2%;
+            }
+            .elem12{
+                left: 50%;
+                transform:translate(-50%);
+                top: 133.2%;
+            }
+            .elem13{
+                left: 100%;
+                transform:translate(-100%);
+                top: 133.2%;
+            }
+            .elem14{
+                left: 33.3%;
+                transform:translate(-50%);
+                top: 166.5%;
+            }
+            .elem15{
+                left: 66.6%;
+                transform:translate(-50%);
+                top: 166.5%;
+            }
+            .elem_wrapper{
+                width: 50vw;
+                height: 50vw;
+                position: absolute;
+            }
+            .elem_wrapper_clone{
+                right: 0;
+                position: absolute;
+            }
+}
 		</style>
 	</head>
 <body>
@@ -168,15 +260,17 @@ $(document).ready(function(){
             $('body').append('<div class="elem step_'+i+' elem'+j+'"><div class="bg"></div></div>')
             if(i == 10 && j == 15){
                 $('.elem').each(function(){
-                    console.log( $(this).offset().left + 'px ' + $(this).offset().top + 'px')
                     $(this).find('.bg').css({'background-position': -1*$(this).offset().left + 'px ' + -1*$(this).offset().top + 'px'})
                 })
+                $( ".elem" ).wrapAll( "<div class='elem_wrapper' />");
+                $( ".elem_wrapper" ).clone().addClass('elem_wrapper_clone').insertAfter( $('.elem_wrapper') )
             }
         }
     }
     function map_range(value, low1, high1, low2, high2) {
         return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
     }
+    var down = false
             $('body').on('touchstart', function(e) {
                 $('.elem').css({'opacity':'1'})
                 startx = e.originalEvent.touches[0].pageX
@@ -238,10 +332,6 @@ $(document).ready(function(){
                     $(this).find('.bg').css({'background-position': (-1*$(this).offset().left-distance(movedx*rat,movedy)) + 'px ' + (-1*$(this).offset().top-distance(movedx*rat,movedy)) + 'px'})
                 })
             })
-            function distance(x1,y1){
-                    var distance = Math.sqrt((Math.pow(x1,2))+(Math.pow(y1,2)))
-                    return distance;
-            }
             $('body').on('touchend', function(e) {
                 $('.elem').addClass('animate')
                 $('.bg').addClass('animate_bg')
@@ -295,6 +385,127 @@ $(document).ready(function(){
                     $('.elem').css({'opacity':'0'})
                 },1000)
             })
+            if(!isMobile){
+                $('body').on('mousedown', function(e) {
+                    down = true
+                    $('.elem').css({'opacity':'1'})
+                    startx = e.pageX
+                    starty = e.pageY
+                    $('.step_1 ').find('.bg').css({'opacity':'.70'})
+                    $('.step_2 ').find('.bg').css({'opacity':'.65'})
+                    $('.step_3 ').find('.bg').css({'opacity':'.60'})
+                    $('.step_4 ').find('.bg').css({'opacity':'.55'})
+                    $('.step_5 ').find('.bg').css({'opacity':'.50'})
+                    $('.step_6 ').find('.bg').css({'opacity':'.45'})
+                    $('.step_7 ').find('.bg').css({'opacity':'.40'})
+                    $('.step_8 ').find('.bg').css({'opacity':'.35'})
+                    $('.step_9 ').find('.bg').css({'opacity':'.30'})
+                    $('.step_10').find('.bg').css({'opacity':'.25'})
+                    // $('.bg').addClass('animate_op')
+                    $('.whole').css({'opacity':'.3'})
+                    $('.elem').css({'background':'radial-gradient(rgba(0, 0, 0, 0.43) 3.78%, rgb(0, 0, 0) 69.13%, transparent 70.75%)'})
+                })
+                $('body').on('mousemove', function(e) {
+                    if(down){
+                        movedx = (e.pageX - startx)/3
+                        movedy = (e.pageY - starty)/3
+                        $('.step_1 ').css({'margin-left':movedx *0.1 +'px'})
+                        $('.step_2 ').css({'margin-left':movedx *0.2 +'px'})
+                        $('.step_3 ').css({'margin-left':movedx *0.3 +'px'})
+                        $('.step_4 ').css({'margin-left':movedx *0.4 +'px'})
+                        $('.step_5 ').css({'margin-left':movedx *0.5 +'px'})
+                        $('.step_6 ').css({'margin-left':movedx *0.6 +'px'})
+                        $('.step_7 ').css({'margin-left':movedx *0.7 +'px'})
+                        $('.step_8 ').css({'margin-left':movedx *0.8 +'px'})
+                        $('.step_9 ').css({'margin-left':movedx *0.9 +'px'})
+                        $('.step_10').css({'margin-left':movedx *1.0 +'px'})
+                        $('.whole'  ).css({'margin-left':movedx *1.2 +'px'})
+                        $('.step_1 ').css({'margin-top':movedy *0.1 +'px'})
+                        $('.step_2 ').css({'margin-top':movedy *0.2 +'px'})
+                        $('.step_3 ').css({'margin-top':movedy *0.3 +'px'})
+                        $('.step_4 ').css({'margin-top':movedy *0.4 +'px'})
+                        $('.step_5 ').css({'margin-top':movedy *0.5 +'px'})
+                        $('.step_6 ').css({'margin-top':movedy *0.6 +'px'})
+                        $('.step_7 ').css({'margin-top':movedy *0.7 +'px'})
+                        $('.step_8 ').css({'margin-top':movedy *0.8 +'px'})
+                        $('.step_9 ').css({'margin-top':movedy *0.9 +'px'})
+                        $('.step_10').css({'margin-top':movedy *1.0 +'px'}) 
+                        $('.whole'  ).css({'margin-top':movedy *1.2 +'px'})
+                        var rat = window.innerHeight/window.innerWidth
+                        $('.step_1 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*3})
+                        $('.step_2 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*3.5})
+                        $('.step_3 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*4})
+                        $('.step_4 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*4.5})
+                        $('.step_5 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*5})
+                        $('.step_6 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*5.5})
+                        $('.step_7 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*6})
+                        $('.step_8 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*6.5})
+                        $('.step_9 ').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*7})
+                        $('.step_10').find('.bg').css({'opacity':1-(distance(movedx*rat,movedy)/(window.innerWidth+window.innerHeight))*7.5})
+                        $('.whole').css({'opacity':1-(distance(movedx,movedy)/(window.innerWidth+window.innerHeight))*10})
+                        $('.elem').each(function(){
+                            $(this).find('.bg').css({'background-position': (-1*$(this).offset().left-distance(movedx*rat,movedy)) + 'px ' + (-1*$(this).offset().top-distance(movedx*rat,movedy)) + 'px'})
+                        })    
+                    }
+                })
+                $('body').on('mouseup', function(e) {
+                    down = false
+                    $('.elem').addClass('animate')
+                    $('.bg').addClass('animate_bg')
+                    $('.elem').each(function(){
+                        $(this).find('.bg').css({'background-position': -1*$(this).offset().left + 'px ' + (-1*$(this).offset().top) + 'px'})
+                    })
+                    // $('.bg').addClass('animate_op')
+                    $('.whole').addClass('animate')
+                    setTimeout(function(){
+                        $('.elem').removeClass('animate')
+                    $('.bg').removeClass('animate_bg')
+                        // $('.bg').removeClass('animate_op')
+                        $('.whole').removeClass('animate')
+                    },1200)
+                    $('.step_1 ').css({'margin-left':'0vw'})
+                    $('.step_2 ').css({'margin-left':'0vw'})
+                    $('.step_3 ').css({'margin-left':'0vw'})
+                    $('.step_4 ').css({'margin-left':'0vw'})
+                    $('.step_5 ').css({'margin-left':'0vw'})
+                    $('.step_6 ').css({'margin-left':'0vw'})
+                    $('.step_7 ').css({'margin-left':'0vw'})
+                    $('.step_8 ').css({'margin-left':'0vw'})
+                    $('.step_9 ').css({'margin-left':'0vw'})
+                    $('.step_10').css({'margin-left':'0vw'})
+                    $('.whole  ').css({'margin-left':'0vw'})
+                    $('.step_1 ').css({'margin-top':'0vw'})
+                    $('.step_2 ').css({'margin-top':'0vw'})
+                    $('.step_3 ').css({'margin-top':'0vw'})
+                    $('.step_4 ').css({'margin-top':'0vw'})
+                    $('.step_5 ').css({'margin-top':'0vw'})
+                    $('.step_6 ').css({'margin-top':'0vw'})
+                    $('.step_7 ').css({'margin-top':'0vw'})
+                    $('.step_8 ').css({'margin-top':'0vw'})
+                    $('.step_9 ').css({'margin-top':'0vw'})
+                    $('.step_10').css({'margin-top':'0vw'}) 
+                    $('.whole  ').css({'margin-top':'0vw'})
+                    $('.step_1 ').find('.bg').css({'opacity':'1'})
+                    $('.step_2 ').find('.bg').css({'opacity':'1'})
+                    $('.step_3 ').find('.bg').css({'opacity':'1'})
+                    $('.step_4 ').find('.bg').css({'opacity':'1'})
+                    $('.step_5 ').find('.bg').css({'opacity':'1'})
+                    $('.step_6 ').find('.bg').css({'opacity':'1'})
+                    $('.step_7 ').find('.bg').css({'opacity':'1'})
+                    $('.step_8 ').find('.bg').css({'opacity':'1'})
+                    $('.step_9 ').find('.bg').css({'opacity':'1'})
+                    $('.step_10').find('.bg').css({'opacity':'1'})
+                    $('.elem').css({'background':'transparent'})
+                    $('.whole').css({'opacity':'1'})
+                    setTimeout(function(){
+                        $('.elem').css({'opacity':'0'})
+                    },1000)
+                })
+            }
+            function distance(x1,y1){
+                    var distance = Math.sqrt((Math.pow(x1,2))+(Math.pow(y1,2)))
+                    return distance;
+            }
 })
 </script>
 <div class="whole"></div>

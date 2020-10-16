@@ -109,6 +109,28 @@ background:linear-gradient(to right, rgb(0, 6, 44), rgba(0, 110, 131, 0) 50.34%)
 .rightside .grad{
 background:linear-gradient(to left, rgb(0, 6, 44), rgba(0, 110, 131, 0) 50.34%)
 }
+@media (min-aspect-ratio: 1/1) {
+    .boxes{
+        width: 50vh;
+    }
+    .leftside{
+    width: 50vh;
+    left: calc(50vw - 50vh);
+    height: 100%;
+    }
+    .whole_back .rightside,
+    .whole .rightside{
+        left: 50vw;
+        width: 50vh;
+    }
+.whole{
+    /*width: 100vh;*/
+}
+.whole_back .boxes{
+    width: 80vh;
+}
+}
+
 </style>
 </head>
 <body>

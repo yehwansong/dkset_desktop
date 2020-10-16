@@ -99,6 +99,29 @@
             	$('.wrapper').css({'left':(window.innerWidth)/2+'px'})
             	$('.wrapper').css({'top' :'0px'})
             })
+
+    var down = false
+            $('body').on('mousedown', function(e) {
+            	down = true
+            	$('.wrapper').removeClass('ani')
+				startx = $('.wrapper').offset().left + (e.pageX-$('.wrapper').offset().left)/2
+				starty = $('.wrapper').offset().top + (e.pageY-$('.wrapper').offset().top)/2
+            })
+            $('body').on('mousemove', function(e) {
+            	if(down){
+					movedx = e.pageX
+					movedy = e.pageY
+	            	$('.wrapper').css({'left':($('.wrapper').offset().left + (e.pageX-$('.wrapper').offset().left)/20)+'px'})
+	            	$('.wrapper').css({'top' :($('.wrapper').offset().top + (e.pageY-$('.wrapper').offset().top)/20)+'px'})
+	            	$('.img').css({'background-position':-1*e.pageX + 'px ' + -1*e.pageY + 'px'})
+            	}
+            })
+            $('body').on('mouseend', function(e) {
+            	down = false
+            	$('.wrapper').addClass('ani')
+            	$('.wrapper').css({'left':(window.innerWidth)/2+'px'})
+            	$('.wrapper').css({'top' :'0px'})
+            })
 	})
 </script>
 </head>
